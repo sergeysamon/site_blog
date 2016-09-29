@@ -1,0 +1,104 @@
+{% extends '../layout.nunj' %}
+
+{% block content %}
+
+    <div class="blog-post container">
+        <div class="post-pub-date text-center">
+            <p>{{ post.createdAt | formatDate('D MMM') }}</p>
+        </div>
+        <div class="row post-content">
+            <ul class="post-info">
+                <li class="post-category">
+                    cat:&nbsp;
+                    <a href="">Diary</a> ,
+                    <a href="">Personal</a>
+                </li>
+                <li class="post-likes" data-slug="{{ post.slug }}">
+                    <img class="img-pointer" src="/images/heart.png"  alt="">
+                    <span>{{ post.likes | length }}</span> Likes
+                </li>
+                <li class="post-comments">
+                    <img src="/images/comment.png" alt="">
+                    {{ post.comments | length }} Comments
+                </li>
+            </ul>
+            <div class="post-texts">
+                <h3>{{ post.title }}</h3>
+                <p>{{ post.text | safe }}</p>
+                <!--<img src="/images/post-image.png" alt="" class="img-responsive img-post">-->
+            </div>
+            <div class="blog-tags">
+                <p>
+                    TAGS&nbsp;&nbsp;
+                    <a href="#">holiday</a>,&nbsp;
+                    <a href="#">diary</a>,&nbsp;
+                    <a href="#">bestmomments</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="blog-comments container">
+        <div class="comments-top">
+            <div class="comment-count">
+                <p>{{ post.comments | length }} Comments</p>
+            </div>
+            <div class="btn-next-post">
+                <button type="button">Next Stories ></button>
+            </div>
+        </div>
+        <div class="post-comment">
+            <h3 class="text-center">Post A Comment</h3>
+            <form method="post">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-3 text-right">
+                        <label for="">Use Your Real Name</label>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 form-padding">
+                        <input type="text" name='user' placeholder='Name' required>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 text-left col-sm-push-3">
+                        <label for="">Email Will not published</label>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 form-padding col-sm-pull-3">
+                        <input type="text" name='email' placeholder='Email' required
+                               pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-3 text-right">
+                        <label for="">Write a good comment</label>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 form-padding">
+                    <textarea name='text' placeholder='Comments' id="" cols="30"
+                              rows="10" required></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-offset-3 col-sm-6 form-padding">
+                        <input type='submit' value='POST'/>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="all-comments">
+            {% for comment in post.comments %}
+                <div class="comments">
+                    <img src="/images/avatar-comment.png" alt="">
+                    <div class="data-bind">
+                        <h4>{{ comment.user }}</h4>
+                        <p> {{ comment.text }}</p>
+                        <a href="">Reply</a>
+                    </div>
+                </div>
+            {% endfor %}
+            {% if post.comments | length > 10 %}
+                <div class="btn-more-comments text-center">
+                    <button type="button">Show More Comments</button>
+                </div>
+            {% endif %}
+
+        </div>
+    </div>
+{% endblock %}
+
+

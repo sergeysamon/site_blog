@@ -1,0 +1,13 @@
+@import "fonts";
+@import "partials/header";
+@import "partials/footer";
+@import "pages/home";
+
+* {
+  box-sizing: border-box
+}
+
+li, ul {
+  padding: 0;
+  margin: 0;
+}

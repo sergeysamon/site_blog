@@ -1,0 +1,32 @@
+
+<header class="container-fluid header">
+    <div class="header-image container-fluid">
+
+    </div>
+    <div class="header-menu container-fluid text-center">
+        <ul class="menu">
+            <li><a href="/" class="menu-after"> Home</a></li>
+            <li><a href="/" class="menu-after"> About</a></li>
+
+            <li><img src="/images/logo-bagusfikri.png" alt="logo-blog"></li>
+
+            <li>
+                <div class="submenu-focus">
+                    Category
+                    <img src="/images/polygon-1.png" alt="">
+                    <div class="drop-menu">
+                        <ul class="submenu">
+                            <li><a href="/">Diary</a></li>
+                            <li><a href="/post/detail">Personal</a></li>
+                            <li><a href="#">Holiday</a></li>
+                            <li><a href="#">Work</a></li>
+                            <li><a href="#">Family</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li><a href="#" class="menu-after"> Contact</a></li>
+
+        </ul>
+    </div>
+</header>

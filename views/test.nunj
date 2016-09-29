@@ -1,0 +1,46 @@
+{% extends '../layout.nunj' %}
+
+{% block content %}
+
+    <div class="container blog-home">
+        <div class="blog-greeting text-center container-fluid">
+            <h2>Hello, Welcome to my Blog!</h2>
+        </div>
+        <div class="blog-post container">
+            <div class="posts_each">
+                {% for post in posts %}
+                    <div class="post-pub-date text-center">
+                        <p>{{ post.createdAt | formatDate('D MMM') }}</p>
+                    </div>
+                    <div class="row post-content">
+                        <ul class="post-info">
+                            <li class="post-category">
+                                cat:&nbsp;
+                                <a href="">Diary</a> ,
+                                <a href="">Personal</a>
+                            </li>
+                            <li class="post-likes">
+                                <img src="/images/heart.png" alt="">
+                                136 Likes
+                            </li>
+                            <li class="post-comments">
+                                <img src="/images/comment.png" alt="">
+                                21 Comments
+                            </li>
+                        </ul>
+                        <div class="post-texts">
+                            <h3>{{ post.title }}</h3>
+                            <p>
+                                {{ post.text | safe | truncate(600) }}</p>
+                            <a href="post/{{ post.slug }}">Read More</a>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+        <div class="blog-button text-center">
+            <button type="button">Load More</button>
+        </div>
+    </div>
+{% endblock %}
